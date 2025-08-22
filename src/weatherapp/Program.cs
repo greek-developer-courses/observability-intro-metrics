@@ -1,8 +1,19 @@
+using System.Diagnostics.Metrics;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resourceBuilder => resourceBuilder
+        .AddService("weatherapp", "1.0.0"))
+    .WithMetrics(metricsProviderBuilder => metricsProviderBuilder
+        .AddMeter("weatherapp").AddAspNetCoreInstrumentation()
+        .AddPrometheusExporter());                
 
 var app = builder.Build();
 
@@ -13,6 +24,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapPrometheusScrapingEndpoint();
 
 var summaries = new[]
 {
