@@ -9,7 +9,7 @@ And for the companion article:
 [GREEK DEVELOPER - Observability: Metrics in the .NET Ecosystem](https://greekdeveloper.com/posts/2025/csharp-metrics-grafana-prometheus)
 
 **Related**:
-[video tutorial]("https://youtu.be/WCPAgxp2KQY") |
+[video tutorial](https://youtu.be/WCPAgxp2KQY) |
 [article](https://greekdeveloper.com/posts/2025/csharp-metrics-grafana-prometheus) 
 
 ## Contents
